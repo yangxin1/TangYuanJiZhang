@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sparkle_Framework2019</name>
+    </assembly>
+    <members>
+        <member name="T:Sparkle_Framework2019.Controllers.Base.BaseAPIController">
+            <summary>
+            基础APIController
+            </summary>
+        </member>
+        <member name="M:Sparkle_Framework2019.Controllers.Base.BaseAPIController.Success(System.Object,System.String)">
+            <summary>
+            返回成功
+            </summary>
+            <param name="Msg"></param>
+            <param name="Data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Sparkle_Framework2019.Controllers.Base.BaseAPIController.Fail(System.String)">
+            <summary>
+            返回失败
+            </summary>
+            <param name="Msg"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Sparkle_Framework2019.Controllers.Base.StateCode">
+            <summary>
+            返回消息枚举
+            </summary>
+        </member>
+        <member name="F:Sparkle_Framework2019.Controllers.ValuesController._des">
+            <summary>
+            加密linshi
+            </summary>
+        </member>
+        <member name="M:Sparkle_Framework2019.Controllers.ValuesController.GetDES">
+            <summary>
+            获取加密字符
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sparkle_Framework2019.Controllers.ValuesController.GetEndes(System.String)">
+            <summary>
+            获取解密字符
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Sparkle_Framework2019.Controllers.ValuesController.GetData">
+            <summary>
+            获取姓名数据
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Sparkle_Framework2019.Startup">
+            <summary>
+            启动类
+            </summary>
+        </member>
+        <member name="M:Sparkle_Framework2019.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:Sparkle_Framework2019.Startup.Configuration">
+            <summary>
+            配置类
+            </summary>
+        </member>
+        <member name="M:Sparkle_Framework2019.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Sparkle_Framework2019.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            中间件
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+            <param name="loggerFactory">日志工厂</param>
+        </member>
+    </members>
+</doc>
