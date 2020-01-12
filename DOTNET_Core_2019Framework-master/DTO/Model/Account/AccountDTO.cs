@@ -35,5 +35,11 @@ namespace DTO.Model.Acount
         /// </summary>
         [DTOColumn(Name ="is_allaccount")]
         public int IsAllAmount { get; set; }
+
+        /// <summary>
+        /// 备注
+        /// </summary>
+        [DTOColumn(Name="remark")]
+        public string Remark { get; set; }
     }
 }

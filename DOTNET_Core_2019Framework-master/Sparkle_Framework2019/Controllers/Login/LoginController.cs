@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Common;
 using DTO.Model.User;
+using DTO.ViewModel.login;
 using IDAL.IUSer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -47,8 +48,12 @@ namespace Sparkle_Framework2019.Controllers.Login
         /// </summary>
         /// <returns></returns>
         [HttpPost("/api/login/login")]
-        public IActionResult Login(string name,string password)
+        public IActionResult Login([FromBody]LoginUser loginuser)
         {
+            string name = loginuser.name;
+            string password = loginuser.password;
+            //空判断
+            if (name == null || password == null) return Fail("用户名和密码为空");
             //身份校验
             string despassword = deshelper.Encrypt(password);
             bool result = service.CheckLogin(name, despassword, out UserDTO user,out string msg);
