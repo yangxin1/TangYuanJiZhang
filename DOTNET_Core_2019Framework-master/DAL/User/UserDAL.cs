@@ -79,6 +79,7 @@ namespace DAL.User
         /// <param name="fieldname"></param>
         /// <param name="value"></param>
         /// <param name="msg"></param>
+        /// <param name="id">用户id</param>
         /// <returns></returns>
         private bool CheckUserName(string fieldname, string value, out string msg)
         {

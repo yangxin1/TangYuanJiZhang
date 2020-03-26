@@ -29,6 +29,18 @@ namespace Sparkle_Framework2019.Controllers.Base
                 return claim.Value;
             }
         }
+        /// <summary>
+        /// 用户ID
+        /// </summary>
+        protected int CurrentUserId
+        {
+            get
+            {
+                Claim claim = User.Claims.FirstOrDefault(x => x.Type == "userid");
+                if (claim == null) return 0;
+                return Convert.ToInt32(claim.Value);
+            }
+        }
 
         /// <summary>
         /// 日志

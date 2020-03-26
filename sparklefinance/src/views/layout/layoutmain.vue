@@ -9,7 +9,7 @@
 <script>
 import layout from '@/views/layout/main'
 export default {
-  name: 'App',
+  name: 'layoutmain',
   components: {
     layout
   },

@@ -1,29 +1,46 @@
 <template>
   <div class="hello">
-    <h1>这是第一个页面</h1>
+    <h1>Hello</h1>
+    <van-button v-if="isLogin" type="info" @click="toLogin">登录</van-button>
+    <h2 v-if="showUser">登录成功</h2>
   </div>
 </template>
 
 <script>
+import { getToken } from '@/utils/auth'
 export default {
   name: 'HelloWorld',
   data () {
     return {
+      isLogin: 0,
+      showUser: 0
     }
   },
   created () {
-    // 打开跳转
-    // this.$router.push({
-    //   path: '/views/account',
-    //   name: 'test'
-    // })
+    this.checkLogin()
   },
-  method: {
+  methods: {
+    // 跳转登录
+    toLogin () {
+      console.log('跳转测试')
+      this.$router.push({
+        path: '/login',
+        name: 'login1'
+      })
+    },
+    // 检测登录
+    checkLogin () {
+      var token = getToken()
+      if (token === undefined) {
+        this.isLogin = 1
+      } else {
+        this.showUser = 1
+      }
+    }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 </style>

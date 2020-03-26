@@ -217,14 +217,72 @@ namespace DAL
             #region 拼装SQL/计算页码
             StringBuilder sqlsb = new StringBuilder();
             //删除判断条件前的空格
-            where = where.TrimStart();
+            //where = where.TrimStart();
             //删除第一个and
-            where = where.Substring(3);
-            sqlsb.Append("select " + Tablefields + " from " + Tablename);
+            //where = where.Substring(3);
+            sqlsb.Append("select " + Tablefields + " from " + Tablename +" where 1=1 ");
 
             if (!string.IsNullOrWhiteSpace(where))
             {
-                sqlsb.Append(" where "+where);
+                //sqlsb.Append(" where "+where);
+                sqlsb.Append(where);
+            }
+            //计算页码
+            if (index == 0)
+            {
+                sqlsb.Append(" limit 0," + limit);
+            }
+            else
+            {
+                int startindex = (index - 1) * limit;
+                sqlsb.Append(" limit " + startindex + "," + limit);
+            }
+            #endregion
+            try
+            {
+                var resultlist = await Task.Run(() =>
+                {
+                    List<T> modellist = _conn.Query<T>(sqlsb.ToString()).ToList();
+                    Logger.Info("获取分页列表异步 成功");
+                    return modellist;
+                });
+                return resultlist;
+
+            }
+            catch (Exception error)
+            {
+                Logger.Error("获取分页列表异步 失败：" + error.Message + "。SQL：" + sqlsb.ToString());
+                return null;
+            }
+        }
+        /// <summary>
+        /// 通过用户ID条件获取分页，异步
+        /// </summary>
+        /// <param name="userid">用户ID</param>
+        /// <param name="index">当前页码</param>
+        /// <param name="limit">每页数量</param>
+        /// <param name="where">条件</param>
+        /// <returns></returns>
+        public virtual async Task<List<T>> GetListAsync(int userid,int index = 1, int limit = 10, string where = "")
+        {
+            #region 拼装SQL/计算页码
+            StringBuilder sqlsb = new StringBuilder();
+            sqlsb.Append("select " + Tablefields + " from " + Tablename);
+            sqlsb.Append(" where 1=1 " + where);
+
+            if (!string.IsNullOrWhiteSpace(where))
+            {
+                ////删除判断条件前的空格
+                //where = where.TrimStart();
+                ////删除第一个and
+                //where = where.Substring(3);
+                //sqlsb.Append(" where 1=1 " + where);
+                //sqlsb.Append(" where " + where);
+                sqlsb.Append(" and user_id = " + userid); // 添加用户id
+            }
+            else
+            {
+                sqlsb.Append(" and user_id = " + userid); // 添加用户id
             }
             //计算页码
             if (index == 0)

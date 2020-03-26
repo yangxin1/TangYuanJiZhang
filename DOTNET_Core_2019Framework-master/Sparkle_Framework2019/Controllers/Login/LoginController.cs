@@ -66,10 +66,11 @@ namespace Sparkle_Framework2019.Controllers.Login
                 Dictionary<string, object> para = new Dictionary<string, object>
                 {
                     { "name", name },
-                    { "password", despassword },
+                    //{ "password", despassword },
                     { "logintime", DateTime.Now },
                     { "roles",roles },
-                    {"ip",ipaddr }
+                    {"ip",ipaddr },
+                    {"userid", user.Id}
                 };
                 string token = Token.CreateTokenByHandler(para); // 加密
                 return Success(token);

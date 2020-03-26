@@ -50,6 +50,16 @@ namespace IDAL
         Task<List<T>> GetListAsync(int index = 1, int limit = 10, string where = "");
 
         /// <summary>
+        /// 根据用户（user_id）有条件的获取分页数据 异步
+        /// </summary>
+        /// <param name="userid">用户ID（从JWT中获取）</param>
+        /// <param name="index"></param>
+        /// <param name="limit"></param>
+        /// <param name="where"></param>
+        /// <returns></returns>
+        Task<List<T>> GetListAsync(int userid, int index = 1, int limit = 10, string where = "");
+
+        /// <summary>
         /// 新增数据
         /// </summary>
         /// <param name="model"></param>

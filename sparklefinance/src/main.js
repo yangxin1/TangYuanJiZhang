@@ -7,13 +7,16 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios' // axios
+import Vant from 'vant'
+import 'vant/lib/index.css'
 
-Vue.prototype.$axios = axios
-// Vue.prototype.axios = qs
+Vue.prototype.$axios = axios // axios
 
 Vue.use(ElementUI) // 全局使用ElementUI
 
 Vue.config.productionTip = false
+
+Vue.use(Vant) // 引用vant组件
 
 /* eslint-disable no-new */
 new Vue({

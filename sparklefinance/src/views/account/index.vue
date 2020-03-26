@@ -1,13 +1,14 @@
 <template>
 <div>
   <div>
-    <!--标签页1-->
-    <el-tabs v-model="activeName">
-      <el-tab-pane label="最近交易" name="first">
-        <p>记一笔</p>
-      </el-tab-pane>
-      <!--标签页2-->
-      <el-tab-pane label="账户管理" name="second">
+    <van-nav-bar
+      class="navTop"
+      left-text="返回"
+      left-arrow
+      @click-left="onClickLeft"
+    />
+  </div>
+  <div>
         <el-card class="box-card" center=true>
           <div slot="header" class="clearfix">
             <span>净资产</span>
@@ -40,12 +41,6 @@
           </el-card>
           <br>
         </div>
-      </el-tab-pane>
-      <!--标签页3-->
-      <el-tab-pane label="统计" name="third">
-        <p>统计图表</p>
-      </el-tab-pane>
-    </el-tabs>
   </div>
 </div>
 </template>
@@ -123,18 +118,25 @@ export default {
         .then(_ => {
           done()
         }).catch(_ => {})
+    },
+    onClickLeft () {
+      alert('返回')
     }
   }
 }
 </script>
 <style>
+  .navTop {
+    margin-top: 0;
+  }
   .item {
     margin-bottom: 18px;
   }
   .box-card {
-    width: 99%;
-    align-content: center;
-    align-self: center;
+    width: 90%;
+    margin: 0 auto;
+    /* align-content: center; */
+    /* align-self: center; */
   }
   .amountColor {
     color: green;

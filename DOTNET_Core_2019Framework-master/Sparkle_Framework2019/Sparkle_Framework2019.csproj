@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\z_code\VS2019\TangYuanJiZhang\DOTNET_Core_2019Framework-master\Sparkle_Framework2019\Sparkle_Framework2019.xml</DocumentationFile>
+    <DocumentationFile>D:\z_code\VS2019\web2019\Sparkle_Framework2019\Sparkle_Framework2019\Sparkle_Framework2019.xml</DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 

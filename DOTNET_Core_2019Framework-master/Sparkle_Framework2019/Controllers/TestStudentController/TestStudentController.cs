@@ -44,10 +44,11 @@ namespace Sparkle_Framework2019.Controllers.TestStudentController
         }
 
         /// <summary>
-        /// 获取学生ID 异步
+        /// 获取学生ID 异步（允许匿名访问）
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpGet("/api/test/getstudentasync/{id}")]
         public async Task<IActionResult> Getstuasync(int id)
         {

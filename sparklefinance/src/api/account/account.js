@@ -13,3 +13,10 @@ export function getAccountById (id) {
     url: '/api/account/account/' + id
   })
 }
+// 根据账本ID获取账本消费记录
+export function getDealList (accountid, index, limit) {
+  return request({
+    method: 'get',
+    url: '/api/deal/list/' + accountid + '/' + index + '/' + limit
+  })
+}

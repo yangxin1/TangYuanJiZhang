@@ -14,7 +14,7 @@ namespace Sparkle_Framework2019.Controllers.Acount
     /// <summary>
     /// 账户接口
     /// </summary>
-    //[Authorize]
+    [Authorize]
     public class AcountController:BaseAPIController
     {
         private readonly IAcountDAL service;
@@ -30,7 +30,8 @@ namespace Sparkle_Framework2019.Controllers.Acount
         [HttpGet("/api/account/acountlist/{index}/{limit}")]
         public async Task<IActionResult> GetAcountList(int index=1,int limit=10)
         {
-            List<AccountDTO> acountlist =await service.GetListAsync(index, limit);
+            //List<AccountDTO> acountlist = await service.GetListAsync(CurrentUserId,index, limit, "");
+            List<AccountDTO> acountlist = await service.GetListAsync(index,limit);
             return Success(acountlist);
         }
         /// <summary>

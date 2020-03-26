@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -119,6 +120,11 @@ namespace Sparkle_Framework2019
             #region 实体映射
             //实体映射
             ColumnMapper.SetMapper();
+            #endregion
+
+            #region 获取token
+            //获取请求头
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             #endregion
 
             #region 依赖注入

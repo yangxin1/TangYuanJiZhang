@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using DTO.Model.Acount;
+using DTO.Model.DealAccount;
 using DTO.Model.Student;
 using DTO.Model.User;
 
@@ -17,6 +18,7 @@ namespace DTO.Model.DTOCommon
             SqlMapper.SetTypeMap(typeof(TestStudentDTO), new DTOColumnAttributeTypeMapper<TestStudentDTO>());
             SqlMapper.SetTypeMap(typeof(UserDTO), new DTOColumnAttributeTypeMapper<UserDTO>());
             SqlMapper.SetTypeMap(typeof(AccountDTO), new DTOColumnAttributeTypeMapper<AccountDTO>());
+            SqlMapper.SetTypeMap(typeof(DealRecordDTO), new DTOColumnAttributeTypeMapper<DealRecordDTO>());
         }
     }
 }
