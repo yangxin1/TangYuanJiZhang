@@ -1,7 +1,6 @@
 ﻿using DTO.Model.Student;
 using IDAL.ITestStudent;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Sparkle_Framework2019.Controllers.Base;
 using System.Collections.Generic;
@@ -62,7 +61,7 @@ namespace Sparkle_Framework2019.Controllers.TestStudentController
         /// <param name="limit">每页数量</param>
         /// <returns></returns>
         [HttpGet("/api/test/studentlist/{index}/{limit}")]
-        public IActionResult GetStudentList(int index=1,int limit = 10)
+        public IActionResult GetStudentList(int index = 1, int limit = 10)
         {
             List<TestStudentDTO> stulist = service.GetList(index, limit);
             return Success(stulist);
@@ -86,7 +85,7 @@ namespace Sparkle_Framework2019.Controllers.TestStudentController
         /// <param name="limit"></param>
         /// <returns></returns>
         [HttpGet("/api/test/studentlistwhere/{index}/{limit}")]
-        public async Task<IActionResult> GetStudentListAsyncWhere(int index=1,int limit = 10)
+        public async Task<IActionResult> GetStudentListAsyncWhere(int index = 1, int limit = 10)
         {
             //从前端传入的筛选条件
             Dictionary<string, string> where = new Dictionary<string, string>
@@ -96,9 +95,9 @@ namespace Sparkle_Framework2019.Controllers.TestStudentController
             };
             string condition = "";
             string empty = " ";
-            if (where.ContainsKey("score1")&&!string.IsNullOrEmpty(where["score1"]))
+            if (where.ContainsKey("score1") && !string.IsNullOrEmpty(where["score1"]))
             {
-                condition += "and score=" + where["score1"]+empty;
+                condition += "and score=" + where["score1"] + empty;
             }
             if (where.ContainsKey("status1") && !string.IsNullOrEmpty(where["status1"]))
             {

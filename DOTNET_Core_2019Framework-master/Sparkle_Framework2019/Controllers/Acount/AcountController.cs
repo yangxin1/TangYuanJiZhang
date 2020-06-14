@@ -3,10 +3,7 @@ using IDAL.IAcount;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sparkle_Framework2019.Controllers.Base;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Sparkle_Framework2019.Controllers.Acount
@@ -15,7 +12,7 @@ namespace Sparkle_Framework2019.Controllers.Acount
     /// 账户接口
     /// </summary>
     [Authorize]
-    public class AcountController:BaseAPIController
+    public class AcountController : BaseAPIController
     {
         private readonly IAcountDAL service;
         public AcountController(IAcountDAL Service)
@@ -28,10 +25,10 @@ namespace Sparkle_Framework2019.Controllers.Acount
         /// </summary>
         /// <returns></returns>
         [HttpGet("/api/account/acountlist/{index}/{limit}")]
-        public async Task<IActionResult> GetAcountList(int index=1,int limit=10)
+        public async Task<IActionResult> GetAcountList(int index = 1, int limit = 10)
         {
             //List<AccountDTO> acountlist = await service.GetListAsync(CurrentUserId,index, limit, "");
-            List<AccountDTO> acountlist = await service.GetListAsync(index,limit);
+            List<AccountDTO> acountlist = await service.GetListAsync(index, limit);
             return Success(acountlist);
         }
         /// <summary>
@@ -54,7 +51,7 @@ namespace Sparkle_Framework2019.Controllers.Acount
         [HttpPost("/api/account/account")]
         public IActionResult AddAccount(AccountDTO account)
         {
-            if(service.Insert(account,out string msg))
+            if (service.Insert(account, out string msg))
             {
                 return Success(msg);
             }

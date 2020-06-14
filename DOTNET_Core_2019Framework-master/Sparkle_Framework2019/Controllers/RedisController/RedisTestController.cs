@@ -1,9 +1,6 @@
 ﻿using Common.Redis;
 using Microsoft.AspNetCore.Mvc;
 using Sparkle_Framework2019.Controllers.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Sparkle_Framework2019.Controllers.RedisController
@@ -11,7 +8,7 @@ namespace Sparkle_Framework2019.Controllers.RedisController
     /// <summary>
     /// Redis测试控制器
     /// </summary>
-    public class RedisTestController:BaseAPIController
+    public class RedisTestController : BaseAPIController
     {
         private readonly IRedisHelper service;
         public RedisTestController(IRedisHelper Service)
@@ -25,7 +22,7 @@ namespace Sparkle_Framework2019.Controllers.RedisController
         /// <param name="value"></param>
         /// <returns></returns>
         [HttpPost("/api/redis/string/{key}/{value}")]
-        public async Task<IActionResult> InsertRedis(string key,string value)
+        public async Task<IActionResult> InsertRedis(string key, string value)
         {
             bool result = await service.AddString(key, value);
             if (result)

@@ -3,10 +3,7 @@ using IDAL.IDealRecord;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sparkle_Framework2019.Controllers.Base;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Sparkle_Framework2019.Controllers.DealRecord

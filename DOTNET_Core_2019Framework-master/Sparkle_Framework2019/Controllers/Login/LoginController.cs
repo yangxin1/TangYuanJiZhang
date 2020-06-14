@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using Common;
+﻿using Common;
 using DTO.Model.User;
 using DTO.ViewModel.login;
 using IDAL.IUSer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Sparkle_Framework2019.Controllers.Base;
+using System;
+using System.Collections.Generic;
 
 namespace Sparkle_Framework2019.Controllers.Login
 {
@@ -34,7 +34,7 @@ namespace Sparkle_Framework2019.Controllers.Login
         /// <summary>
         /// 构造函数
         /// </summary>
-        public LoginController(IHttpContextAccessor httpContextAccessor,IDESHelper DEShelper,IUserDAL Service)
+        public LoginController(IHttpContextAccessor httpContextAccessor, IDESHelper DEShelper, IUserDAL Service)
         {
             ipservice = httpContextAccessor;
             deshelper = DEShelper;
@@ -48,7 +48,7 @@ namespace Sparkle_Framework2019.Controllers.Login
         /// </summary>
         /// <returns></returns>
         [HttpPost("/api/login/login")]
-        public IActionResult Login([FromBody]LoginUser loginuser)
+        public IActionResult Login([FromBody] LoginUser loginuser)
         {
             string name = loginuser.name;
             string password = loginuser.password;
@@ -56,7 +56,7 @@ namespace Sparkle_Framework2019.Controllers.Login
             if (name == null || password == null) return Fail("用户名和密码为空");
             //身份校验
             string despassword = deshelper.Encrypt(password);
-            bool result = service.CheckLogin(name, despassword, out UserDTO user,out string msg);
+            bool result = service.CheckLogin(name, despassword, out UserDTO user, out string msg);
             if (result)
             {
                 //通过用户获取角色
@@ -77,7 +77,7 @@ namespace Sparkle_Framework2019.Controllers.Login
             }
             else
             {
-                return Fail("登陆失败："+msg);
+                return Fail("登陆失败：" + msg);
             }
         }
         /// <summary>
@@ -88,7 +88,7 @@ namespace Sparkle_Framework2019.Controllers.Login
         [HttpPost("/api/login/checklogin")]
         public IActionResult CheckLogin(string jwt)
         {
-            if(Token.Validate(jwt, out string message))
+            if (Token.Validate(jwt, out string message))
             {
                 return Success(ipservice.HttpContext.Connection.RemoteIpAddress.ToString());
             }

@@ -1,24 +1,21 @@
-﻿
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Sparkle_Framework2019.Controllers.Base
 {
-    public class ApiAuthorize: IAuthorizationPolicyProvider
+    public class ApiAuthorize : Attribute, IAuthorizationFilter
     {
-        public Task<AuthorizationPolicy> GetDefaultPolicyAsync()
+        // 参考：https://www.cnblogs.com/morang/p/7606843.html
+        public void OnAuthorization(AuthorizationFilterContext filterContext)
         {
-            throw new NotImplementedException();
+            var claim = filterContext.HttpContext.User.Claims;
+            var userName = claim.FirstOrDefault(x => x.Type == "name")?.Value; // 在这里加入需要进行权限判断的逻辑
+            if (userName == null)
+            {
+                filterContext.Result = new StatusCodeResult(403);
+            }
         }
-
-        public Task<AuthorizationPolicy> GetPolicyAsync(string policyName)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

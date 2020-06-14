@@ -14,3 +14,5 @@
 2020-02-05 11:06:46.0482 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: allfile
 2020-02-05 11:17:42.0094 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: allfile
 2020-02-05 11:17:42.0662 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: allfile
+2020-05-31 15:47:56.4583 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: allfile
+2020-05-31 15:47:56.5474 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: allfile
